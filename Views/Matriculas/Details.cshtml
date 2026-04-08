@@ -1,0 +1,79 @@
+﻿@model RecreioFerias.Models.Matricula
+
+@{
+    ViewData["Title"] = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="titulo-aluno">Detalhes da Matricula</h1>
+<br />
+<hr />
+
+<div class="container">
+
+
+    <div class="card">
+        <div class="card-heading d-flex justify-content-between bg-primary text-white">
+            <div class="info-esquerda"> 
+            <h2 class="formulario-campo-titulo"><i class="bi bi-file-earmark-plus"></i>Detalhes da Matricula</h2>
+            </div>
+            <div class="info-direita formulario-campo-titulo"><b>*</b> Campos Obrigatórios</div>
+        </div>
+
+        <div class="card-body formulario-campo-informacoes">
+            <div class="row mb-3">
+
+                <div class="col-md-3">
+                    <label for="AlunoNome" class="col-sm"><b>Aluno: </b></label>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="Aluno.Nome" class="form-control" id="AlunoNome" disabled/>
+                    <span asp-validation-for="Aluno.Nome" class="text-danger"></span>
+                </div>
+                <div class="col-md-3">
+                    <label for="turma" class="col-sm"><b>Turma: </b></label>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="Turma.Descricao" class="form-control" id="turma" disabled/>
+                    <span asp-validation-for="Turma.Descricao" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label for="idade" class="col-sm"><b>Idade: </b></label>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="Aluno.IdadeCalculada" class="form-control" id="idade" disabled />
+                    <span asp-validation-for="Aluno.DataNascimento" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label for=FaixaEtaria class="col-sm"><b>Faixa Etária: </b></label>
+                </div>
+                <div class="col-md-3">
+                   <input asp-for="Turma.FaixaEtaria" class="form-control" id="FaixaEtaria" disabled /> 
+                    <span asp-validation-for="Turma.IdadeMaxima" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card-footer">
+            <div class="form-group">
+                <a asp-action="Edit" class="btn btn-warning formulario-campo-informacoes" asp-route-alunoId="@Model?.AlunoId" asp-route-matriculaId="@Model?.MatriculaId" asp-route-turmaId="@Model?.TurmaId"
+                aria-label="Botoa Editar Matricula"
+                >
+                    <i class="bi bi-pencil" style="vertical-align: middle; border:1px; color:white;"></i>
+                    &#32 Editar
+                </a>
+
+                &#32&#32&#32&#32
+                <a asp-action="Index" class="btn btn-outline-secondary small" style="color:darkgray">
+                    <i class="bi bi-arrow-left-square"></i>&#32 <b class="formulario-campo-informacoes"
+                    aria-label="Botao Voltar"
+                    >Voltar</b>
+                </a>
+            </div>
+        </div>
+</div>
+</div>

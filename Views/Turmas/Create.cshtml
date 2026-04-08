@@ -1,0 +1,93 @@
+﻿@model RecreioFerias.Models.Turma
+
+@{
+    ViewData["Title"] = "Criar Turma";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="titulo-aluno">Criar Turma</h1>
+<br />
+<hr />
+
+<div class="container fonte-login fs-personalizado">
+
+
+    <div class="card">
+        <div class="card-heading d-flex justify-content-between bg-success text-white">
+            <div class="info-esquerda"> 
+            <h2 class="formulario-campo-titulo"><i class="bi bi-file-earmark-plus"></i>Cadastrar nova Turma</h2>
+            </div>
+            <div class="info-direita formulario-campo-titulo"><b>*</b> Campos Obrigatórios</div>
+        </div>
+        
+   
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="card-body">
+            <div class="row mb-3">
+
+            <div class="col-md-3 formulario-campo-informacoes" >
+                    <label for="QuantidadeAlunos" class="col-sm"><b>Quantidade Total de Alunos: </b></label>
+                </div>
+                <div class="col-md-3">
+                <input asp-for="QuantidadeAlunos" class="form-control" />
+                <span asp-validation-for="QuantidadeAlunos" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="Descricao" class="col-sm"><b>Cor da Turma: </b></label>
+                    </div>
+                    <div class="col-md-3">
+                        <input asp-for="Descricao" class="form-control" />
+                        <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+            <div class="col-md-3">
+                        <label for="IdadeMaxima" class="col-sm"><b>Idade Máxima: </b></label>
+                </div>
+                <div class="col-md-3">
+                <input asp-for="IdadeMaxima" class="form-control" />
+                <span asp-validation-for="IdadeMaxima" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-3">
+                        <label for="IdadeMinima" class="col-sm"><b>Idade Mínima: </b></label>
+                </div>
+                <div class="col-md-3">
+                <input asp-for="IdadeMinima" class="form-control" />
+                <span asp-validation-for="IdadeMinima" class="text-danger"></span>
+            </div>
+           </div>
+           </div>
+                <div class="card-footer">
+                    <div class="form-group ">
+            
+                <button class="btn btn-primary formulario-campo-informacoes" type="submit" value="Create"
+                aria-label="Botão Salvar"
+                >
+
+                    <i class="bi bi-arrow-up-square"></i>&#32 Salvar
+                </button>
+
+                &#32&#32&#32&#32
+                <a asp-action="Index" class="btn btn-outline-secondary small formulario-campo-informacoes" style="color:darkgray"
+                aria-label="Botão Voltar"
+                >
+                    <i class="bi bi-arrow-left-square"></i>&#32 <b>Voltar</b>
+                </a>
+
+            </div>
+            </div>
+        </form>
+        </div>
+        </div>
+   
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

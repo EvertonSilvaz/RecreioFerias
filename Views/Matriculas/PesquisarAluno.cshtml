@@ -1,0 +1,110 @@
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<RecreioFerias.Models.Aluno>
+
+@{
+    ViewData["Title"] = "Matriculas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1 class="titulo-principal-nav">Matriculas</h1>
+           
+        </div>
+        <div class="col-lg-6">
+            <form asp-action="PesquisarAluno" asp-controller="Matriculas" method="get">
+                <label for="pesquisa" class="form-label formulario-campo-informacoes" >Pesquisar:</label>
+                <input type="text" name="pesquisa" id="pesquisa" value="@ViewBag.filtro" />
+
+                <button class="btn btn-outline-secondary small" style="color:darkblue" type="submit"
+                aria-label="Botão Pesquisar"
+                >
+                    <i class="bi bi-search"></i>
+                </button>
+
+                <button class="btn btn-outline-info small" style="color:blueviolet" onclick="limparInput()"
+                aria-label="Botao Limpar Campo"
+                >
+                    <i class="bi bi-eraser"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div><br /></div>
+</div>
+<table class=" table table-condensed table-hover table-striped formulario-campo-informacoes">
+    <thead>
+        <tr>
+            <th>
+                Nome:
+            </th>
+
+            <th>
+                Idade:
+            </th>
+
+
+            <th>
+                Data de Nascimento:
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdadeCalculada)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.Turma.Descricao)
+            </td> *@
+
+                <td>
+                    <a asp-controller="Matriculas" asp-action="Create" asp-route-id="@item.AlunoId" class="btn btn-primary"
+                    aria-label="Botão matricular"
+                    >
+
+
+                        <i class="bi bi-emoji-laughing-fill" style="vertical-align: middle;"></i> Matricular
+                    </a>
+                    
+                </td>
+        </tr>
+}
+        @if (ViewBag.MensagemErro != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.MensagemErro
+            </div>
+        }
+
+    </tbody>
+</table>
+<div>
+    <div style="float: right">
+        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+    </div>
+
+    <div class="justify-content-center">
+        @Html.PagedListPager(
+                 Model,
+                 page => Url.Action("PesquisarAluno", new { page, filtro = ViewBag.filtro }),
+                 new PagedListRenderOptions
+        {
+
+            LiElementClasses = new[] { "page-item" },
+            UlElementClasses = new[] { "pagination justify-content-center" }
+        }
+                 )
+    </div>
+</div>

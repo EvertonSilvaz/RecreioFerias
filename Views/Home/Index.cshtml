@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+}
+<link href="~/css/site.css" rel="stylesheet" />
+<div class="container">
+    <div class="row align-items-center">
+        <img src="@Url.Content("~/imagens/recreio_nas_ferias_logo.png")" alt="Logo da Aplicação" style="width: 350px; height:100px;">
+
+    </div>
+    <br />
+    <div class="container fs-personalizado fonte-login" >
+    <div class="row justify-content-center">
+        <!-- Card 1 -->
+
+
+        <div class="col-md-4">
+            <div class="card card-azul index-cor-texto">
+                <div class="card-body">
+                    <h2 class="card-title">Gestão de Alunos</h2>
+                    <p class="card-text">Gerencie os alunos do sistema.</p>
+                    <a href="/Alunos" aria-label="Botão acessar Gestão de Alunos do sistema" class="btn btn-primary ">Acessar</a>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="card card-roxo index-cor-texto">
+                <div class="card-body">
+                    <h2 class="card-title">Gestão de Turmas</h2>
+                    <p class="card-text">Gerencie as turmas do sistema.</p>
+                    <a href="/Turmas" aria-label="Botão acessar Gestão de Turmas do sistemas"  class="btn button-roxo ">Acessar</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Card 3 -->
+        @* <div class="col-md-4">
+            <div class="card card-amarelo">
+                <div class="card-body">
+                    <h5 class="card-title">Matriculas</h5>
+                    <p class="card-text">Gerencie as matriculas do sistema.</p>
+                    <a href="/Matriculas" class="btn button-amarelo">Acessar</a>
+                </div>
+            </div>
+        </div> *@
+
+        </div>
+        <br />
+        <br />
+    <div class="row justify-content-center">
+        <!-- Card 4 -->
+       @*  <div class="col-md-4">
+            <div class="card card-laranja">
+                <div class="card-body">
+                    <h5 class="card-title">Relatórios</h5>
+                    <p class="card-text">Visualize e gere relatórios detalhados.</p>
+                    <a href="/Relatorios" class="btn button-laranja">Acessar</a>
+                </div>
+            </div>
+        </div> *@
+
+        <!-- Card 5 -->
+      @*   <div class="col-md-4">
+            <div class="card card-verde">
+                <div class="card-body">
+                    <h5 class="card-title">Frequência</h5>
+                    <p class="card-text">Aponte a Frequencência dos alunos.</p>
+                    <a href="/Frequencia" class="btn button-verde">Acessar</a>
+                </div>
+            </div>
+        </div>
+ *@
+
+        <div class="col-md-4">
+            <div class="card card-amarelo index-cor-texto">
+                <div class="card-body">
+                    <h2 class="card-title">Matriculas</h2>
+                    <p class="card-text">Gerencie as matriculas do sistema.</p>
+                    <a href="/Matriculas" aria-label="Botão acessar Gestão de Matriculas do sistema"  class="btn button-amarelo index-cor-texto">Acessar</a>
+                </div>
+            </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="col-md-4">
+            <div class="card card-rosa index-cor-texto">
+                <div class="card-body">
+                    <h2 class="card-title">Operadores</h2>
+                    <p class="card-text">Gerencie os usuarios do sistema.</p>
+                    <a href="/Operadores" aria-label="Botão acessar Gestão de Usuarios do sistema"  class="btn button-rosa index-cor-texto">Acessar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

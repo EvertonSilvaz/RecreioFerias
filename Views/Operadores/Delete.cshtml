@@ -1,0 +1,56 @@
+﻿@model RecreioFerias.Models.Operador
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="titulo-aluno">Delete</h1>
+
+<div>
+    <h2 class="formulario-campo-titulo">Operador</h2>
+
+    <hr />
+
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h2 class="formulario-campo-titulo"><i class="bi bi-trash"></i>Confirmar Exclusão</h2>
+            </div>
+            <div>
+                <p class="formulario-campo-informacoes">Tem certeza que deseja excluir esta Operador? </p>
+                <div class="row">
+
+                    <div class="col-1">
+                        <b>Operador: </b>
+                    </div>
+                    <div class="col-2">
+                        @Html.DisplayFor(model => model.Login)
+                    </div>
+                    <div class="col-2">
+                        <b>Situação: </b>
+                    </div>
+                    <div class="col-1">
+                        @((Model.Situacao) ? "Ativo" : "Inativo")
+                    </div>
+                </div>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OperadorId" />
+                    <button class="btn btn-danger" value="Delete" type="submit"
+                    aria-modal="Botão Deletar"
+                    >
+                        <i class="bi bi-trash formulario-campo-informacoes" style="vertical-align: middle;"></i>&#32 Apagar
+
+                    </button>
+                    &#32&#32&#32&#32
+                    <a asp-action="Index" class="btn btn-outline-secondary small" style="color:darkgray"
+                    aria-modal="Botão Voltar"
+                    >
+                        <i class="bi bi-arrow-left-square  formulario-campo-informacoes"></i>&#32 <b>Voltar</b>
+                    </a>
+    </form>
+            </div>
+        </div>
+    </div>
+</div>

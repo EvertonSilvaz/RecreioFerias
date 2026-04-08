@@ -1,0 +1,68 @@
+﻿@model RecreioFerias.Models.Operador
+
+@{
+    ViewData["Title"] = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="titulo-aluno">Detalhes da Operador</h1>
+
+<br />
+<hr />
+
+<div class="container">
+
+
+    <div class="card">
+        <div class="card-heading d-flex justify-content-between bg-primary text-white">
+            <div class="info-esquerda"> 
+            <h2 class="formulario-campo-titulo"><i class="bi bi-file-earmark-plus"></i>Detalhes do Operador</h2></div>
+            <div class="info-direita formulario-campo-titulo"><b>*</b> Campos Obrigatórios</div>
+        </div>
+        <div class="card-body formulario-campo-informacoes">
+            <div class="row mb-3">
+
+                <div class="col-md-3">
+                    <label for="login" class="col-sm"><b>Login: </b></label>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="Login" id="login" class="form-control" disabled />
+                    <span asp-validation-for="Login" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="senha" class="col-sm"><b>Senha: </b></label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" value="******" class="form-control" id="senha" disabled />
+                    <span asp-validation-for="Senha" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label for="situaçao" class="col-sm"><b>Situação: </b></label>
+                </div>
+                <div class="col-md-3">
+                    @((Model.Situacao) ? "Ativo" : "Inativo")
+                    <span asp-validation-for="Situacao" class="text-danger"></span>
+                </div>
+        
+            </div>
+            <div class="card-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.OperadorId"
+                    aria-modal="Botão Editar"
+                    >
+                        <i class="bi bi-pencil" style="vertical-align: middle; border:1px; color:white;"></i>
+                        &#32 Editar
+                    </a>
+                    &#32&#32&#32&#32
+                    <a asp-action="Index" class="btn btn-outline-secondary small" style="color:darkgray"
+                    aria-modal="Botão Voltar">
+                        <i class="bi bi-arrow-left-square"></i>&#32 <b>Voltar</b>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
