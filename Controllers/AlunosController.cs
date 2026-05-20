@@ -5,7 +5,7 @@ using RecreioFerias.Data;
 using RecreioFerias.Models;
 using X.PagedList.Extensions;
 using static RecreioFerias.Controllers.HomeController;
-using QRCoder;
+using QRCoder;//permite a utilização de biblioteca que gera os QR Codes
 
 
 
@@ -22,15 +22,18 @@ namespace RecreioFerias.Controllers
 
             // 2. Criamos uma string com as informações que queremos que apareçam no celular
             // Se o aluno for nulo, usamos um aviso
+            string autorizacaoSaida = aluno.VoltaSozinho ? "PODE SAIR SOZINHO" : "APENAS COM RESP.";
             string informacao = aluno != null
-                ? $"ALUNO: {aluno.Nome}\nRESP: {aluno.NomeResponsavel1}\nTEL: {aluno.TelefoneResponsavel1}"
+                /*? $"ALUNO: {aluno.Nome}\n RESP: {aluno.NomeResponsavel1}\n TEL: {aluno.TelefoneResponsavel1}\n VOLTA SOZINHO: {aluno.VoltaSozinho}"
+                : "Aluno nao encontrado";*/
+                ? $"ALUNO: {aluno.Nome}\n\nRESP: {aluno.NomeResponsavel1}\n\nTEL: {aluno.TelefoneResponsavel1}\n\nAutorizado sair Sozinho: {autorizacaoSaida}"
                 : "Aluno nao encontrado";
 
             using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
             using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(informacao, QRCodeGenerator.ECCLevel.Q))
             using (PngByteQRCode qrCode = new PngByteQRCode(qrCodeData))
             {
-                byte[] qrCodeImage = qrCode.GetGraphic(20);
+                byte[] qrCodeImage = qrCode.GetGraphic(100);
                 return File(qrCodeImage, "image/png");
             }
         }
